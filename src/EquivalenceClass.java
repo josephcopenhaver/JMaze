@@ -10,15 +10,18 @@
  *
  */
 
-public class EquivalenceClass {
+public class EquivalenceClass
+{
    
    private Integer[] members;
    // Interpret null mapping equivalent to member is root of class
    
    /*
     * Init method
+    *
     */
-   public EquivalenceClass(int range) {
+   public EquivalenceClass(int range)
+   {
       
       members = new Integer[range];
       
@@ -28,8 +31,10 @@ public class EquivalenceClass {
    /*
     * Attempt to combine two classes.
     * A true return means a merger occured.
+    *
     */
-   public boolean merge(int memberA, int memberB) {
+   public boolean merge(int memberA, int memberB)
+   {
       
       memberA = getRoot(memberA);
       
@@ -40,20 +45,14 @@ public class EquivalenceClass {
          return false;
       
       if (memberA > memberB)
-      {
          
          members[memberA] = memberB;
-         
-      }
+      
       else
-      {
-         
+      
          members[memberB] = memberA;
-         
-      }
       
       return true;
-      
       
    }
    
@@ -61,17 +60,16 @@ public class EquivalenceClass {
    /*
     * Retreive the root node of the
     * equivalence class given a member
+    *
     */
-   public int getRoot(int member) {
+   public int getRoot(int member)
+   {
       
       Integer parent = members[member];
       
       if (parent == null)
-      {
          
          return member;
-         
-      }
       
       return (members[member] = getRoot(parent));
       

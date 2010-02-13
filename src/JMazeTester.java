@@ -3,12 +3,13 @@
  *
  * email: joseph.copenhaver@gmail.com
  *
- *
  */
 
-class JMazeTester {
+class JMazeTester
+{
    
-   public static void main(String[] args) throws Exception {
+   public static void main(String[] args) throws Exception
+   {
       
       while (true)
       {
@@ -27,7 +28,8 @@ class JMazeTester {
     * and display a prompt header.
     *
     */
-   public static int promptInt(String x) {
+   public static int promptInt(String x)
+   {
       
       System.out.print(x + ": ");
       

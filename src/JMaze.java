@@ -3,13 +3,13 @@
  *
  * email: joseph.copenhaver@gmail.com
  *
- *
  */
 
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class JMaze {
+public class JMaze
+{
    
    private int _width;
    
@@ -25,20 +25,21 @@ public class JMaze {
     * Init method
     *
     */
-   public JMaze(int width, int height) throws InstantiationException {
+   public JMaze(int width, int height) throws InstantiationException
+   {
       
       if (width < 1 || height < 1)
          
          throw new InstantiationException();
       
       _height = height - 1;
-   	  
-   	  _width = width - 1;
-   	  
-   	  startOfVertWalls = width * _height;
+      
+      _width = width - 1;
+      
+      startOfVertWalls = width * _height;
       
       EquivalenceClass eqc = new EquivalenceClass(height * width);
-   	  
+      
       walls = new Boolean[(_width * height) + (_height * width)];
       
       ArrayList<Integer> wallNumbers = new ArrayList<Integer>(walls.length);
@@ -55,30 +56,27 @@ public class JMaze {
          int cellA = wall - startOfVertWalls;
          
          int cellB = -1;
-      	
+         
          if (cellA >= 0)
          {
-         	
-         	cellA += (cellA/_width);
             
-      	    cellB = cellA + 1;
-      	    
+            cellA += (cellA/_width);
+            
+            cellB = cellA + 1;
+            
          }
          else
          {
-      	    
-      	    cellA = wall;
-      	    
-      	    cellB = wall + width;
             
-      	 }
-      	
-      	 if (eqc.merge(cellA, cellB))
-         {
-      	    
-      		walls[wall] = false;
-      		
+            cellA = wall;
+            
+            cellB = cellA + width;
+            
          }
+         
+         if (eqc.merge(cellA, cellB))
+            
+            walls[wall] = false;
          
       }
       
@@ -89,7 +87,8 @@ public class JMaze {
     * Display maze via STDOUT and simple characters
     *
     */
-   public void print() {
+   public void print()
+   {
       
       System.out.print("  ");
       
@@ -118,7 +117,7 @@ public class JMaze {
                System.out.print(((walls[vIndex++] == null) ? '|' : '_' ));
             
          }
-            
+         
          System.out.println('|');
          
       }
@@ -126,11 +125,8 @@ public class JMaze {
       System.out.print('|');
       
       while(vIndex < walls.length)
-      {
          
          System.out.print(((walls[vIndex++] == null) ? "_|" : "__" ));
-         
-      }
       
       System.out.println(" |");
       
